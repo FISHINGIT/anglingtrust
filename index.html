@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angling Trust Data</title>
+<meta name="description" content="Index of the Angling Trust Get Fishing evaluation dashboards: Get Fishing Fund, Reel Education, Rod Licence Waivers and Coach Bursaries.">
+<style>
+  :root{
+    --navy:#0b5978; --navy-deep:#083f56; --blue:#009ddc; --blue-soft:#e6f6fd;
+    --green:#009e43; --green-soft:#e6f6ec;
+    --ink:#17303d; --muted:#5b6f7a; --line:#dde6eb; --paper:#f4f8fa; --card:#ffffff;
+    --radius:14px; --shadow:0 1px 2px rgba(11,89,120,.06),0 8px 24px rgba(11,89,120,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--navy)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 
+  /* top bar */
+  .bar{background:var(--card);border-bottom:1px solid var(--line)}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy)}
+  .brand .mark{width:38px;height:38px;border-radius:10px;background:var(--navy);display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.5px}
+  .brand .name{font-weight:700;line-height:1.15}
+  .brand .name small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+  .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted);background:#fff}
+  .chip .dot{width:9px;height:9px;border-radius:50%;background:var(--green)}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 60%,#0a6f92 100%);color:#fff;padding:56px 0 48px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,157,220,.45),rgba(0,157,220,0) 70%)}
+  .hero .wrap{position:relative}
+  .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;opacity:.8}
+  .hero h1{font-size:clamp(28px,4.2vw,42px);line-height:1.1;margin:10px 0 14px;font-weight:800;letter-spacing:-.01em;max-width:760px}
+  .hero p{font-size:clamp(16px,1.6vw,19px);max-width:680px;margin:0 0 26px;opacity:.92}
+  .jump{display:flex;gap:10px;flex-wrap:wrap}
+  .jump a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600}
+  .jump a:hover{background:rgba(255,255,255,.18)}
+  .hero .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+  .hero .strip div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px}
+  .hero .strip b{display:block;font-size:26px;font-weight:800;line-height:1.1}
+  .hero .strip span{font-size:13px;opacity:.85}
+
+  /* sections */
+  section{padding:48px 0}
+  h2{font-size:clamp(22px,2.6vw,28px);margin:0 0 6px;color:var(--navy);letter-spacing:-.01em}
+  .lede{color:var(--muted);margin:0 0 26px;max-width:720px}
+
+  /* cards */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;display:flex;flex-direction:column;gap:16px;position:relative;scroll-margin-top:24px}
+  .card::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:0 4px 4px 0;background:var(--accent,var(--blue))}
+  .card .head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .card .prog{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent,var(--blue))}
+  .card h3{margin:2px 0 0;font-size:22px;line-height:1.2;color:var(--navy)}
+  .card .num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--accent,var(--blue));flex:none;font-size:15px}
+  .card .what{margin:0;color:var(--ink)}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .kpi{background:var(--paper);border-radius:10px;padding:10px 12px}
+  .kpi b{display:block;font-size:22px;font-weight:800;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+  .kpi span{font-size:12.5px;color:var(--muted)}
+  .use{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+  .use li{padding-left:22px;position:relative;font-size:15px}
+  .use li::before{content:"";position:absolute;left:0;top:9px;width:12px;height:6px;border-radius:3px;background:var(--accent,var(--blue));opacity:.8}
+  .use-label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:6px}
+  .card .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;font-size:15px}
+  .btn:hover{background:var(--navy-deep)}
+  .btn svg{width:16px;height:16px}
+  .meta{font-size:13px;color:var(--muted)}
+  .views{display:flex;gap:6px;flex-wrap:wrap}
+  .views span{font-size:12.5px;background:var(--blue-soft);color:var(--navy);border-radius:6px;padding:3px 8px;font-weight:600}
+
+  /* journey */
+  .journey{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+  .step{position:relative;padding:18px 18px 18px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+  .step::after{content:"";position:absolute;right:-12px;top:50%;width:10px;height:10px;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:translateY(-50%) rotate(45deg)}
+  .step:last-child::after{display:none}
+  .step .t{font-weight:700;color:var(--navy);margin:0 0 4px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .step .tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--accent,var(--blue));border-radius:6px;padding:2px 8px;margin-bottom:8px}
+
+  /* conventions */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .rule h4{margin:0 0 6px;font-size:16px;color:var(--navy)}
+  .rule p{margin:0;font-size:14.5px;color:var(--muted)}
+
+  footer{padding:28px 0 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+  @media (max-width:820px){
+    .grid,.flow,.rules{grid-template-columns:1fr}
+    .hero .strip{grid-template-columns:repeat(2,1fr)}
+    .step::after{right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%) rotate(135deg)}
+    .kpis{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:480px){
+    .kpis{grid-template-columns:1fr 1fr}
+    .hero{padding:40px 0 36px}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="mark">AT</span>
+      <span class="name">Angling Trust<small>Get Fishing evaluation dashboards</small></span>
+    </a>
+    <span class="chip"><span class="dot"></span>Funded by the Environment Agency</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">NASS3 · Get Fishing</div>
+    <h1>Angling Trust Data - telling our story, one dashboard at a time.</h1>
+    <p>Four live views of delivery across England: who we fund, who we teach, who we get fishing and who we train. Built from the team's own registers, so every figure reconciles to a row you can find.</p>
+    <nav class="jump" aria-label="Jump to a dashboard">
+      <a href="#gff">Get Fishing Fund</a>
+      <a href="#re">Reel Education</a>
+      <a href="#rlw">Rod Licence Waivers</a>
+      <a href="#cb">Coach Bursaries</a>
+    </nav>
+    <div class="strip" id="strip"></div>
+  </div>
+</header>
+
+<section id="dashboards">
+  <div class="wrap">
+    <h2>The four dashboards</h2>
+    <p class="lede">Each one follows the same pattern: an Overview for the headline, a Detail register you can filter and search, and a third view that answers the question colleagues most often ask. Filters recalculate every figure live, and every dashboard can be saved as a PDF from the top bar.</p>
+    <div class="grid" id="cards"></div>
+  </div>
+</section>
+
+<section class="journey">
+  <div class="wrap">
+    <h2>How they fit together</h2>
+    <p class="lede">Read left to right and the four dashboards trace the route a newcomer takes into angling, and the support the team puts in place at each step.</p>
+    <div class="flow">
+      <div class="step" style="--accent:#f59e0b">
+        <span class="tag">Coach Bursaries</span>
+        <p class="t">Train the people</p>
+        <p>Bursary codes get volunteers and club members through Level 1 and Level 2 coaching, so there is someone qualified on the bank.</p>
+      </div>
+      <div class="step" style="--accent:#009ddc">
+        <span class="tag">Get Fishing Fund</span>
+        <p class="t">Fund the sessions</p>
+        <p>Grants to clubs, fisheries and community groups pay for the taster events, kit and bait that bring first-timers to the water.</p>
+      </div>
+      <div class="step" style="--accent:#009e43">
+        <span class="tag">Rod Licence Waivers</span>
+        <p class="t">Remove the barrier</p>
+        <p>Waivers issued by Regional Officers let newcomers fish legally at an organised event without buying a licence first.</p>
+      </div>
+      <div class="step" style="--accent:#7c3aed">
+        <span class="tag">Reel Education</span>
+        <p class="t">Reach the schools</p>
+        <p>Delivery partners take angling into primary and secondary schools, and Access to Angling grants help schools turn a taster into a club.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conventions">
+  <div class="wrap">
+    <h2>Same rules on every dashboard</h2>
+    <p class="lede">Learn one and you know them all.</p>
+    <div class="rules">
+      <div class="rule"><h4>Regions and EA Areas</h4><p>Every dashboard maps to the eight Angling Trust Regions (London sits within South East) and the fourteen Environment Agency Areas. Click a Region on the map to filter; use Reset to clear.</p></div>
+      <div class="rule"><h4>Figures reconcile live</h4><p>Nothing is a pasted total. Each figure is recomputed from the register rows in your browser, so a filtered KPI, chart and table always agree with each other.</p></div>
+      <div class="rule"><h4>People shown appropriately</h4><p>Organisers, clubs, schools and delivery partners appear in full as professional roles. Officers appear as initials. Participants, applicants and school contacts are never shown.</p></div>
+      <div class="rule"><h4>Source of truth</h4><p>Each dashboard reads one central register (an Excel workbook kept by the team). Fix the register and the next refresh fixes the dashboard; nothing is edited by hand in between.</p></div>
+      <div class="rule"><h4>Dates and periods</h4><p>Time is charted by event start date and grouped by financial quarter (April to March). Period labels sit in column headers, not in cells.</p></div>
+      <div class="rule"><h4>Save as PDF</h4><p>Use the Download PDF button in a dashboard's top bar to capture the current filtered view for a report, board paper or email.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Find out more at <a href="https://anglingtrust.net/get-fishing/">anglingtrust.net/get-fishing</a>, or join the Angling Trust at <a href="https://anglingtrust.net/membership">anglingtrust.net/membership</a> (01568 620447).</div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT HERE. Everything the page shows about each dashboard
+   lives in this one block. Update the href when you drop a new
+   version in, and the figures and asAt date when you refresh.
+   ============================================================ */
+const DASHBOARDS = [
+  {
+    id:"gff", prog:"Get Fishing Fund", title:"Grants that put events on the bank",
+    accent:"#009ddc", href:"https://fishingit.github.io/gff/",
+    what:"Every grant awarded from the Get Fishing Fund, where it went and what it paid for.",
+    views:["Overview","Grant Detail","Organisations"],
+    kpis:[["TBC","Grants awarded"],["TBC","Organisations funded"],["TBC","Regions reached"]],
+    use:["Check which clubs and fisheries in your Region have been funded, and when",
+         "See where funding is thin against participation and target the next round",
+         "Pull the grant list for a Region into a PDF for a partner meeting"],
+    asAt:"TBC"
+  },
+  {
+    id:"re", prog:"Reel Education", title:"Angling in schools, session by session",
+    accent:"#7c3aed", href:"https://fishingit.github.io/re/",
+    what:"Delivery partner sessions in schools since April 2026, plus the EA Access to Angling school grants that follow them.",
+    views:["Impact story","Delivery detail","School grants"],
+    kpis:[["69","Sessions"],["5,441","Children (per session)"],["42","Schools"]],
+    use:["Find which schools a partner has visited and how many children each session reached",
+         "Follow a school from taster session to Access to Angling grant",
+         "Spot Regions with partners but no school activity yet"],
+    asAt:"19 Aug 2026"
+  },
+  {
+    id:"rlw", prog:"Rod Licence Waivers", title:"Who we covered, where and when",
+    accent:"#009e43", href:"https://fishingit.github.io/rlw/",
+    what:"Rod Licence Waivers issued by Angling Trust Regional Officers for organised events in 2026-2027.",
+    views:["Overview","Waiver Detail","Organisers"],
+    kpis:[["319","Waivers issued"],["133","Organisers"],["1,636","Event days"]],
+    use:["Look up an organiser or venue and see every waiver issued to them",
+         "Check lead time between issue and event to plan your own approvals",
+         "Compare Regions and EA Areas to see where events are clustering"],
+    asAt:"8 Sep 2026"
+  },
+  {
+    id:"cb", prog:"Coach Bursaries", title:"From discount code to qualified coach",
+    accent:"#f59e0b", href:"https://fishingit.github.io/bur/",
+    what:"Bursary discount codes issued to trainee coaches, whether the award was made and whether training was accessed.",
+    views:["Overview","Bursary Detail","Projects"],
+    kpis:[["80","Bursaries awarded"],["41","Training accessed"],["56","Projects"]],
+    use:["See which codes in your Region are awarded but not yet used, and chase them",
+         "Track conversion from award to training by quarter",
+         "Find the clubs and projects sending the most people through coaching"],
+    asAt:"18 Sep 2026"
+  }
+];
+
+/* Hero strip: one headline per dashboard */
+const STRIP = [
+  ["4","dashboards, one pattern"],
+  ["8","Angling Trust Regions"],
+  ["14","EA Areas mapped"],
+  ["3","views in every dashboard"]
+];
+
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+document.getElementById("strip").innerHTML = STRIP.map(([b,s])=>`<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join("");
+
+document.getElementById("cards").innerHTML = DASHBOARDS.map((d,i)=>`
+  <article class="card" id="${d.id}" style="--accent:${d.accent}">
+    <div class="head">
+      <div><div class="prog">${esc(d.prog)}</div><h3>${esc(d.title)}</h3></div>
+      <div class="num">${i+1}</div>
+    </div>
+    <p class="what">${esc(d.what)}</p>
+    <div class="kpis">${d.kpis.map(([v,l])=>`<div class="kpi"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("")}</div>
+    <div>
+      <div class="use-label">Use it to</div>
+      <ul class="use">${d.use.map(u=>`<li>${esc(u)}</li>`).join("")}</ul>
+    </div>
+    <div class="views">${d.views.map(v=>`<span>${esc(v)}</span>`).join("")}</div>
+    <div class="foot">
+      <a class="btn" href="${esc(d.href)}">Open dashboard ${arrow}</a>
+      <span class="meta">Figures as at ${esc(d.asAt)}</span>
+    </div>
+  </article>`).join("");
+</script>
+</body>
+</html>
