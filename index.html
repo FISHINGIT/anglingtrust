@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Angling Trust Data</title>
-<meta name="description" content="Index of the Angling Trust Get Fishing evaluation dashboards: Get Fishing Fund, Reel Education, Rod Licence Waivers and Coach Bursaries.">
+<meta name="description" content="Index of the Angling Trust Get Fishing evaluation dashboards: Get Fishing Fund, Reel Education, Rod Licence Waivers, Coach Bursaries and Fishery Management Advisors.">
 <style>
   :root{
     --navy:#0b5978; --navy-deep:#083f56; --blue:#009ddc; --blue-soft:#e6f6fd;
@@ -65,6 +65,8 @@
   .use li{padding-left:22px;position:relative;font-size:15px}
   .use li::before{content:"";position:absolute;left:0;top:9px;width:12px;height:6px;border-radius:3px;background:var(--accent,var(--blue));opacity:.8}
   .use-label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:6px}
+  .card.wide{grid-column:1/-1;display:grid;grid-template-columns:1.05fr 1fr;column-gap:36px;row-gap:16px;grid-template-areas:"head usebox" "what usebox" "kpis usebox" "views usebox" "foot foot"}
+  .card.wide .head{grid-area:head}.card.wide .what{grid-area:what}.card.wide .kpis{grid-area:kpis}.card.wide .usebox{grid-area:usebox;align-self:center}.card.wide .views{grid-area:views}.card.wide .foot{grid-area:foot}
   .card .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;font-size:15px}
   .btn:hover{background:var(--navy-deep)}
@@ -75,12 +77,12 @@
 
   /* journey */
   .journey{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
-  .step{position:relative;padding:18px 18px 18px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step}
+  .step{position:relative;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
   .step::after{content:"";position:absolute;right:-12px;top:50%;width:10px;height:10px;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:translateY(-50%) rotate(45deg)}
   .step:last-child::after{display:none}
   .step .t{font-weight:700;color:var(--navy);margin:0 0 4px}
-  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .step p{margin:0;font-size:14px;color:var(--muted)}
   .step .tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--accent,var(--blue));border-radius:6px;padding:2px 8px;margin-bottom:8px}
 
   /* conventions */
@@ -93,6 +95,7 @@
 
   @media (max-width:820px){
     .grid,.flow,.rules{grid-template-columns:1fr}
+    .card.wide{display:flex;grid-column:auto}
     .hero .strip{grid-template-columns:repeat(2,1fr)}
     .step::after{right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%) rotate(135deg)}
     .kpis{grid-template-columns:repeat(3,1fr)}
@@ -119,12 +122,13 @@
   <div class="wrap">
     <div class="eyebrow">NASS3 · Get Fishing</div>
     <h1>Angling Trust Data - telling our story, one dashboard at a time.</h1>
-    <p>Four live views of delivery across England: who we fund, who we teach, who we get fishing and who we train.</p>
+    <p>Five live views of delivery across England: who we fund, who we teach, who we get fishing, who we train and the waters we look after.</p>
     <nav class="jump" aria-label="Jump to a dashboard">
       <a href="#gff">Get Fishing Fund</a>
       <a href="#re">Reel Education</a>
       <a href="#rlw">Rod Licence Waivers</a>
       <a href="#cb">Coach Bursaries</a>
+      <a href="#fma">Fishery Management Advisors</a>
     </nav>
     <div class="strip" id="strip"></div>
   </div>
@@ -132,7 +136,7 @@
 
 <section id="dashboards">
   <div class="wrap">
-    <h2>The four dashboards</h2>
+    <h2>The five dashboards</h2>
     <p class="lede">Each one follows the same pattern: an Overview for the headline, a Detail register you can filter and search, and a third view that answers the question colleagues most often ask. Filters recalculate every figure live, and every dashboard can be saved as a PDF from the top bar.</p>
     <div class="grid" id="cards"></div>
   </div>
@@ -141,7 +145,7 @@
 <section class="journey">
   <div class="wrap">
     <h2>How they fit together</h2>
-    <p class="lede">Read left to right and the four dashboards trace the route a newcomer takes into angling, and the support the team puts in place at each step.</p>
+    <p class="lede">Read left to right and the five dashboards trace the route a newcomer takes into angling, the support the team puts in place at each step, and the work that keeps the waters worth fishing.</p>
     <div class="flow">
       <div class="step" style="--accent:#f59e0b">
         <span class="tag">Coach Bursaries</span>
@@ -162,6 +166,11 @@
         <span class="tag">Reel Education</span>
         <p class="t">Reach the schools</p>
         <p>Delivery partners take angling into primary and secondary schools, and Access to Angling grants help schools turn a taster into a club.</p>
+      </div>
+      <div class="step" style="--accent:#0891b2">
+        <span class="tag">Fishery Management Advisors</span>
+        <p class="t">Look after the waters</p>
+        <p>Advisors help clubs and fisheries with predation, fencing, licences and improvement funding, so the waters stay worth fishing.</p>
       </div>
     </div>
   </div>
@@ -236,12 +245,23 @@ const DASHBOARDS = [
          "Track conversion from award to training by quarter",
          "Find the clubs and projects sending the most people through coaching"],
     asAt:"18 Sep 2026"
+  },
+  {
+    id:"fma", prog:"Fishery Management Advisors", title:"Looking after the waters, contact by contact",
+    accent:"#0891b2", href:"https://fishingit.github.io/fma/",
+    what:"Every contact logged by the Fishery Management Advisors in 2025-2026: site visits, meetings, emails and calls, and the predation issues behind them.",
+    views:["Overview","Work Log Detail","Predation"],
+    kpis:[["1,187","Contacts logged"],["500","Waters supported"],["217","Site visits"]],
+    use:["See which waters in your Region the advisors have visited and how often they come back",
+         "Check where cormorant and otter enquiries are clustering, and which waters are fenced",
+         "Track AO6a licence support and Angling Improvement Fund referrals by Region"],
+    asAt:"21 Sep 2026"
   }
 ];
 
 /* Hero strip: one headline per dashboard */
 const STRIP = [
-  ["4","dashboards, one pattern"],
+  ["5","dashboards, one pattern"],
   ["8","Angling Trust Regions"],
   ["14","EA Areas mapped"],
   ["3","views in every dashboard"]
@@ -253,14 +273,14 @@ const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 document.getElementById("strip").innerHTML = STRIP.map(([b,s])=>`<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join("");
 
 document.getElementById("cards").innerHTML = DASHBOARDS.map((d,i)=>`
-  <article class="card" id="${d.id}" style="--accent:${d.accent}">
+  <article class="card${(i===DASHBOARDS.length-1&&DASHBOARDS.length%2===1)?" wide":""}" id="${d.id}" style="--accent:${d.accent}">
     <div class="head">
       <div><div class="prog">${esc(d.prog)}</div><h3>${esc(d.title)}</h3></div>
       <div class="num">${i+1}</div>
     </div>
     <p class="what">${esc(d.what)}</p>
     <div class="kpis">${d.kpis.map(([v,l])=>`<div class="kpi"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("")}</div>
-    <div>
+    <div class="usebox">
       <div class="use-label">Use it to</div>
       <ul class="use">${d.use.map(u=>`<li>${esc(u)}</li>`).join("")}</ul>
     </div>

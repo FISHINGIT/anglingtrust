@@ -1,6 +1,6 @@
 # Angling Trust Data: GitHub Pages index
 
-Commit `index.html` to the root of `FISHINGIT/anglingtrust` and it publishes at https://fishingit.github.io/anglingtrust/, linking out to the four dashboard sites you already host (`/gff/`, `/re/`, `/rlw/`, `/bur/`). Everything the page says about a dashboard (link, figures, date, wording) is in one `DASHBOARDS` block at the bottom of `index.html`, so a refresh is a two-minute edit.
+Commit `index.html` to the root of `FISHINGIT/anglingtrust` and it publishes at https://fishingit.github.io/anglingtrust/, linking out to the five dashboard sites you host (`/gff/`, `/re/`, `/rlw/`, `/bur/`, `/fma/`). Everything the page says about a dashboard (link, figures, date, wording) is in one `DASHBOARDS` block at the bottom of `index.html`, so a refresh is a two-minute edit.
 
 ## Where things live
 
@@ -10,16 +10,21 @@ FISHINGIT/gff              -> https://fishingit.github.io/gff/            Get Fi
 FISHINGIT/re               -> https://fishingit.github.io/re/             Reel Education
 FISHINGIT/rlw              -> https://fishingit.github.io/rlw/            Rod Licence Waivers
 FISHINGIT/bur              -> https://fishingit.github.io/bur/            Coach Bursaries
+FISHINGIT/fma              -> https://fishingit.github.io/fma/            Fishery Management Advisors
 ```
 
-The index uses full URLs for the four dashboards, so it works from the `anglingtrust` repo and would also work unchanged if you ever moved it to `FISHINGIT/fishingit.github.io` to sit at the site root.
+The index uses full URLs for the five dashboards, so it works from the `anglingtrust` repo and would also work unchanged if you ever moved it to `FISHINGIT/fishingit.github.io` to sit at the site root.
 
 ## Publishing steps
 
 1. In the `anglingtrust` repo, add `index.html` at the root (move any existing `index.html` aside first if you want to keep it).
 2. Commit and push to the branch Pages serves from (Settings, Pages, "Build and deployment" shows which).
 3. If Pages is not yet on for this repo: Settings, Pages, Source "Deploy from a branch", branch `main`, folder `/ (root)`, Save.
-4. After a minute or two open https://fishingit.github.io/anglingtrust/ and click through the four cards.
+4. After a minute or two open https://fishingit.github.io/anglingtrust/ and click through the five cards.
+
+## Adding or removing a dashboard
+
+Add a new entry to the `DASHBOARDS` block (copy an existing one), add a jump link in the hero `nav`, and add a step to the "How they fit together" row if it belongs in the story. The page handles an odd number of cards by widening the last one to fill the row.
 
 ## Refreshing the index after a dashboard update
 
@@ -34,7 +39,7 @@ The Get Fishing Fund entry is filled with `TBC` placeholders because that dashbo
 
 ## What the index does not do
 
-It is a static page and does not pull figures out of the dashboards automatically (each dashboard computes its own figures live from embedded rows, and GitHub Pages has no server to query them). The card figures are a snapshot you update by hand. If that becomes a chore, the next step is for each dashboard's build script to also write a small `summary.json` beside it, which the index could fetch on load, since all five sites share the `fishingit.github.io` origin.
+It is a static page and does not pull figures out of the dashboards automatically (each dashboard computes its own figures live from embedded rows, and GitHub Pages has no server to query them). The card figures are a snapshot you update by hand. If that becomes a chore, the next step is for each dashboard's build script to also write a small `summary.json` beside it, which the index could fetch on load, since all six sites share the `fishingit.github.io` origin.
 
 ## Public visibility
 
