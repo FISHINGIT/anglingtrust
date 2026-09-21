@@ -24,7 +24,7 @@ The index uses full URLs for the five dashboards, so it works from the `anglingt
 
 ## Adding or removing a dashboard
 
-Add a new entry to the `DASHBOARDS` block (copy an existing one), add a jump link in the hero `nav`, and add a step to the "How they fit together" row if it belongs in the story. The page handles an odd number of cards by widening the last one to fill the row.
+Add a new entry to the `DASHBOARDS` block (copy an existing one), add a jump link in the hero `nav`, and add a step to the "How they fit together" row if it belongs in the story. The last card in the grid is the Angling Trust membership panel (logo, PPD banner, join links), which is written directly in the script after the `DASHBOARDS` loop; keep it last.
 
 ## Refreshing the index after a dashboard update
 
@@ -34,8 +34,6 @@ Open `index.html`, find `const DASHBOARDS` near the bottom and edit that dashboa
 - `asAt`: the date under the button ("Figures as at ...")
 - `href`: only if a dashboard's address changes
 - `what`, `use`, `views`: wording, if the dashboard's scope changes
-
-The Get Fishing Fund entry is filled with `TBC` placeholders because that dashboard was not read in this session; replace them with its headline figures.
 
 ## What the index does not do
 
